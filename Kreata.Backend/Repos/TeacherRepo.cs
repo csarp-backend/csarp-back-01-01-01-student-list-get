@@ -14,12 +14,12 @@ namespace Kreata.Backend.Repos
 
         public List<Teacher> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Teachers.ToList();
         }
 
         public Teacher? GetBy(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Teachers.FirstOrDefault(s => s.Id == id);
         }
     }
 }
