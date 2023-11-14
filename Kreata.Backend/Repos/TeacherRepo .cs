@@ -1,5 +1,6 @@
 ﻿using Kreata.Backend.Context;
 using Kreata.Backend.Datas.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kreata.Backend.Repos
 {
@@ -12,14 +13,14 @@ namespace Kreata.Backend.Repos
             _dbContext = dbContext;
         }
 
-        public List<Teacher> GetAll()
+        public async Task<List<Teacher>> GetAll()
         {
-            return _dbContext.Teachers.ToList();
+            return await _dbContext.Teachers.ToListAsync();
         }
 
-        public Teacher? GetBy(Guid id)
+        public async Task<Teacher?> GetBy(Guid id)
         {
-            return _dbContext.Teachers.FirstOrDefault(s => s.Id == id);
+            return await _dbContext.Teachers.FirstOrDefaultAsync(s => s.Id == id);
         }
     }
 }
